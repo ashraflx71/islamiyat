@@ -2,499 +2,328 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="theme-color" content="#123D32">
+  <meta name="theme-color" content="#343a40">
   <meta name="description" content="إسلاميات - منصة إسلامية للقرآن الكريم والسنة النبوية والأذكار والأدعية والتفسير والعلوم الإسلامية.">
   <meta name="author" content="Islamiyat">
   <meta name="application-name" content="إسلاميات">
 
+  <meta property="og:title" content="إسلاميات | نور العلم والذكر والهداية">
+  <meta property="og:description" content="منصة إسلامية للعلم النافع والقرآن الكريم والذكر والهداية.">
+  <meta property="og:type" content="website">
+
   <title>إسلاميات | نور العلم والذكر والهداية</title>
 
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-
-  <header class="site-header" id="top">
-
-    <div class="header-inner">
-
-      <a href="#home" class="brand">
-        <span class="brand-symbol">۞</span>
-
-        <span class="brand-text">
-          <strong>إسلاميات</strong>
-          <small>نور العلم والذكر والهداية</small>
-        </span>
-      </a>
-
-      <nav class="main-nav" aria-label="القائمة الرئيسية">
-
-        <a href="#home">الرئيسية</a>
-        <a href="#sections">الأقسام</a>
-        <a href="#quran">القرآن الكريم</a>
-        <a href="#about">عن المنصة</a>
-
-      </nav>
-
-      <div class="header-actions">
-
-        <button class="language-button" id="language-button" type="button">
-          العربية
-        </button>
-
-        <button class="menu-button" id="menu-button"
-          type="button"
-          aria-label="فتح القائمة"
-          aria-expanded="false">
-          ☰
-        </button>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <!-- HERO -->
-
-  <main>
-
-    <section class="hero" id="home">
-
-      <div class="hero-decoration decoration-one">۞</div>
-      <div class="hero-decoration decoration-two">✦</div>
-
-      <div class="hero-content">
-
-        <span class="hero-label">
-          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-        </span>
-
-        <h1>
-          إسلاميات
-        </h1>
-
-        <h2>
-          نور العلم والذكر والهداية
-        </h2>
-
-        <p>
-          رحلة إيمانية تجمع القرآن الكريم والسنة النبوية
-          والأذكار والأدعية والعلوم الإسلامية في مكان واحد،
-          بمصادر موثوقة وتجربة رقمية تليق بعظمة العلم النافع.
-        </p>
-
-        <a href="#sections" class="primary-button">
-          اكتشف أقسام المنصة
-          <span>←</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- SEARCH -->
-
-    <section class="search-section" aria-label="البحث">
-
-      <div class="search-box">
-
-        <span class="search-icon">⌕</span>
-
-        <input
-          type="search"
-          id="site-search"
-          placeholder="ابحث في أقسام إسلاميات..."
-          aria-label="البحث في المنصة"
-        >
-
-        <span class="search-hint">بحث</span>
-
-      </div>
-
-    </section>
-
-
-    <!-- CATEGORIES -->
-
-    <section class="sections-section" id="sections">
-
-      <div class="section-heading">
-
-        <span class="section-eyebrow">رحلتك إلى المعرفة</span>
-
-        <h2>أقسام المنصة</h2>
-
-        <p>
-          أبواب متنوعة للعلم والعبادة والمعرفة الإسلامية.
-        </p>
-
-      </div>
-
-
-      <div class="categories-grid">
-
-        <a href="#quran" class="card category-card">
-
-          <span class="category-symbol">۞</span>
-
-          <h3>القرآن الكريم</h3>
-
-          <p>كتاب الله وتلاوة آياته وتدبر معانيه.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#hadith" class="card category-card">
-
-          <span class="category-symbol">۩</span>
-
-          <h3>الحديث النبوي</h3>
-
-          <p>السنة النبوية والأحاديث ومصادرها.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#adhkar" class="card category-card">
-
-          <span class="category-symbol">☪</span>
-
-          <h3>الأذكار</h3>
-
-          <p>أذكار الصباح والمساء والأذكار اليومية.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#dua" class="card category-card">
-
-          <span class="category-symbol">🤲</span>
-
-          <h3>الأدعية</h3>
-
-          <p>الأدعية المأثورة من القرآن والسنة.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#tafsir" class="card category-card">
-
-          <span class="category-symbol">📖</span>
-
-          <h3>التفسير</h3>
-
-          <p>تفسير الآيات وفهم معاني القرآن الكريم.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#seerah" class="card category-card">
-
-          <span class="category-symbol">🌙</span>
-
-          <h3>السيرة النبوية</h3>
-
-          <p>سيرة الرسول ﷺ ومواقفه ودروسه العظيمة.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#fiqh" class="card category-card">
-
-          <span class="category-symbol">⚖</span>
-
-          <h3>الفقه الإسلامي</h3>
-
-          <p>العبادات والمعاملات والأحكام الشرعية.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#articles" class="card category-card">
-
-          <span class="category-symbol">✦</span>
-
-          <h3>المقالات الإسلامية</h3>
-
-          <p>موضوعات نافعة ومعرفة إسلامية موثقة.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-
-        <a href="#library" class="card category-card">
-
-          <span class="category-symbol">📚</span>
-
-          <h3>المكتبة الإسلامية</h3>
-
-          <p>الكتب والمراجع والمصادر العلمية.</p>
-
-          <span class="card-arrow">←</span>
-
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- QURAN -->
-
-    <section class="content-section quran-section" id="quran">
-
-      <div class="content-decoration">۞</div>
-
-      <span class="section-eyebrow">كلام الله تعالى</span>
-
-      <h2>القرآن الكريم</h2>
-
-      <p class="quran-verse">
-        ﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾
-      </p>
-
-      <p class="verse-reference">
-        سورة الرعد - الآية 28
-      </p>
-
-      <div class="content-note">
-        سيتم عرض سور القرآن الكريم وآياته من قاعدة البيانات
-        بعد تجهيز المحتوى القرآني الموثق.
-      </div>
-
-    </section>
-
-
-    <!-- HADITH -->
-
-    <section class="content-section" id="hadith">
-
-      <span class="section-eyebrow">هدي النبي ﷺ</span>
-
-      <h2>السنة النبوية</h2>
-
-      <p>
-        نتطلع إلى تقديم الأحاديث النبوية مع مصادرها
-        وتخريجها وبيان درجتها وفق المراجع المعتمدة.
-      </p>
-
-    </section>
-
-
-    <!-- ADHKAR -->
-
-    <section class="content-section" id="adhkar">
-
-      <span class="section-eyebrow">طمأنينة القلب</span>
-
-      <h2>الأذكار</h2>
-
-      <p>
-        أذكار الصباح والمساء والأذكار اليومية
-        من المصادر الموثوقة.
-      </p>
-
-    </section>
-
-
-    <!-- DUA -->
-
-    <section class="content-section" id="dua">
-
-      <span class="section-eyebrow">الدعاء عبادة</span>
-
-      <h2>الأدعية</h2>
-
-      <p>
-        أدعية القرآن الكريم والأدعية النبوية المأثورة.
-      </p>
-
-    </section>
-
-
-    <!-- TAFSIR -->
-
-    <section class="content-section" id="tafsir">
-
-      <span class="section-eyebrow">تدبر وفهم</span>
-
-      <h2>التفسير</h2>
-
-      <p>
-        فهم معاني الآيات بالرجوع إلى كتب التفسير المعتمدة.
-      </p>
-
-    </section>
-
-
-    <!-- SEERAH -->
-
-    <section class="content-section" id="seerah">
-
-      <span class="section-eyebrow">السيرة العطرة</span>
-
-      <h2>السيرة النبوية</h2>
-
-      <p>
-        رحلة في سيرة الرسول محمد ﷺ ومراحل حياته المباركة.
-      </p>
-
-    </section>
-
-
-    <!-- FIQH -->
-
-    <section class="content-section" id="fiqh">
-
-      <span class="section-eyebrow">فقه وعبادة</span>
-
-      <h2>الفقه الإسلامي</h2>
-
-      <p>
-        موضوعات فقهية منظمة مع توثيق المصادر
-        وبيان مواضع الخلاف عند الحاجة.
-      </p>
-
-    </section>
-
-
-    <!-- ARTICLES -->
-
-    <section class="content-section" id="articles">
-
-      <span class="section-eyebrow">علم ومعرفة</span>
-
-      <h2>المقالات الإسلامية</h2>
-
-      <p>
-        مقالات هادفة وموثوقة في العلوم والمعارف الإسلامية.
-      </p>
-
-    </section>
-
-
-    <!-- LIBRARY -->
-
-    <section class="content-section" id="library">
-
-      <span class="section-eyebrow">كنوز المعرفة</span>
-
-      <h2>المكتبة الإسلامية</h2>
-
-      <p>
-        كتب ومراجع علمية إسلامية مرتبة حسب التخصص.
-      </p>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section class="about-section" id="about">
-
-      <span class="section-eyebrow">رسالتنا</span>
-
-      <h2>العلم النافع والأمانة</h2>
-
-      <p>
-        نسعى إلى تقديم محتوى إسلامي موثوق،
-        يجمع بين صحة المعلومة وسهولة الوصول
-        واحترام عقل الزائر ووقته.
-      </p>
-
-      <div class="values-grid">
-
-        <div class="value-item">
-          <span>✦</span>
-          <h3>المصداقية</h3>
-          <p>الرجوع إلى المصادر الموثوقة.</p>
-        </div>
-
-        <div class="value-item">
-          <span>۞</span>
-          <h3>الأمانة</h3>
-          <p>الدقة في نقل النصوص الشرعية.</p>
-        </div>
-
-        <div class="value-item">
-          <span>❖</span>
-          <h3>العلم النافع</h3>
-          <p>معرفة يسهل الوصول إليها.</p>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer class="site-footer">
-
-    <div class="footer-symbol">۞</div>
-
-    <h2>إسلاميات</h2>
-
-    <p>نور العلم والذكر والهداية</p>
-
-    <div class="footer-links">
+<header class="site-header" id="top">
+  <div class="header-inner">
+
+    <a href="#home" class="brand">
+      <span class="brand-symbol">۞</span>
+      <span class="brand-text">
+        <strong>إسلاميات</strong>
+        <small>نور العلم والذكر والهداية</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="القائمة الرئيسية">
       <a href="#home">الرئيسية</a>
       <a href="#sections">الأقسام</a>
+      <a href="#quran">القرآن الكريم</a>
       <a href="#about">عن المنصة</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="language-button" id="language-button" type="button">
+        English
+      </button>
+
+      <button
+        class="menu-button"
+        id="menu-button"
+        type="button"
+        aria-label="فتح القائمة"
+        aria-expanded="false">
+        ☰
+      </button>
     </div>
 
-    <div class="footer-divider"></div>
+  </div>
+</header>
 
-    <p class="copyright">
-      إسلاميات © <span id="current-year">2026</span>
+<main>
+
+  <section class="hero" id="home">
+    <div class="hero-decoration decoration-one">۞</div>
+    <div class="hero-decoration decoration-two">✦</div>
+
+    <div class="hero-content">
+      <span class="hero-label">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+      </span>
+
+      <h1>إسلاميات</h1>
+
+      <h2>نور العلم والذكر والهداية</h2>
+
+      <p>
+        رحلة إيمانية تجمع القرآن الكريم والسنة النبوية
+        والأذكار والأدعية والعلوم الإسلامية في مكان واحد،
+        بمصادر موثوقة وتجربة رقمية تليق بعظمة العلم النافع.
+      </p>
+
+      <a href="#sections" class="primary-button">
+        اكتشف أقسام المنصة <span>←</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="search-section" aria-label="البحث">
+    <div class="search-box">
+      <span class="search-icon">⌕</span>
+
+      <input
+        type="search"
+        id="site-search"
+        placeholder="ابحث في أقسام إسلاميات..."
+        aria-label="البحث في المنصة">
+
+      <span class="search-hint">بحث</span>
+    </div>
+  </section>
+
+  <section class="sections-section" id="sections">
+
+    <div class="section-heading">
+      <span class="section-eyebrow">رحلتك إلى المعرفة</span>
+      <h2>أقسام المنصة</h2>
+      <p>أبواب متنوعة للعلم والعبادة والمعرفة الإسلامية.</p>
+    </div>
+
+    <div class="categories-grid">
+
+      <a href="#quran" class="card category-card">
+        <span class="category-symbol">۞</span>
+        <h3>القرآن الكريم</h3>
+        <p>كتاب الله وتلاوة آياته وتدبر معانيه.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#hadith" class="card category-card">
+        <span class="category-symbol">۩</span>
+        <h3>الحديث النبوي</h3>
+        <p>السنة النبوية والأحاديث ومصادرها.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#adhkar" class="card category-card">
+        <span class="category-symbol">☪</span>
+        <h3>الأذكار</h3>
+        <p>أذكار الصباح والمساء والأذكار اليومية.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#dua" class="card category-card">
+        <span class="category-symbol">🤲</span>
+        <h3>الأدعية</h3>
+        <p>الأدعية المأثورة من القرآن والسنة.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#tafsir" class="card category-card">
+        <span class="category-symbol">📖</span>
+        <h3>التفسير</h3>
+        <p>تفسير الآيات وفهم معاني القرآن الكريم.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#seerah" class="card category-card">
+        <span class="category-symbol">🌙</span>
+        <h3>السيرة النبوية</h3>
+        <p>سيرة الرسول ﷺ ومواقفه ودروسه العظيمة.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#fiqh" class="card category-card">
+        <span class="category-symbol">⚖</span>
+        <h3>الفقه الإسلامي</h3>
+        <p>العبادات والمعاملات والأحكام الشرعية.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#articles" class="card category-card">
+        <span class="category-symbol">✦</span>
+        <h3>المقالات الإسلامية</h3>
+        <p>موضوعات نافعة ومعرفة إسلامية موثقة.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+      <a href="#library" class="card category-card">
+        <span class="category-symbol">📚</span>
+        <h3>المكتبة الإسلامية</h3>
+        <p>الكتب والمراجع والمصادر العلمية.</p>
+        <span class="card-arrow">←</span>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="content-section quran-section" id="quran">
+
+    <div class="content-decoration">۞</div>
+
+    <span class="section-eyebrow">كلام الله تعالى</span>
+    <h2>القرآن الكريم</h2>
+
+    <p class="quran-verse">
+      ﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾
     </p>
 
-    <p class="footer-prayer">
-      نسأل الله أن يجعل هذا العمل خالصًا لوجهه الكريم
-      وأن ينفع به عباده.
+    <p class="verse-reference">سورة الرعد - الآية 28</p>
+
+    <div
+      id="quran-content"
+      class="quran-content"
+      aria-live="polite"
+      aria-busy="true">
+      جارٍ تحميل سور القرآن الكريم...
+    </div>
+
+  </section>
+
+  <section class="content-section" id="hadith">
+    <span class="section-eyebrow">هدي النبي ﷺ</span>
+    <h2>السنة النبوية</h2>
+    <p>الأحاديث النبوية مع مصادرها وتخريجها وبيان درجتها وفق المراجع المعتمدة.</p>
+  </section>
+
+  <section class="content-section" id="adhkar">
+    <span class="section-eyebrow">طمأنينة القلب</span>
+    <h2>الأذكار</h2>
+    <p>أذكار الصباح والمساء والأذكار اليومية من المصادر الموثوقة.</p>
+  </section>
+
+  <section class="content-section" id="dua">
+    <span class="section-eyebrow">الدعاء عبادة</span>
+    <h2>الأدعية</h2>
+    <p>أدعية القرآن الكريم والأدعية النبوية المأثورة.</p>
+  </section>
+
+  <section class="content-section" id="tafsir">
+    <span class="section-eyebrow">تدبر وفهم</span>
+    <h2>التفسير</h2>
+    <p>فهم معاني الآيات بالرجوع إلى كتب التفسير المعتمدة.</p>
+  </section>
+
+  <section class="content-section" id="seerah">
+    <span class="section-eyebrow">السيرة العطرة</span>
+    <h2>السيرة النبوية</h2>
+    <p>رحلة في سيرة الرسول محمد ﷺ ومراحل حياته المباركة.</p>
+  </section>
+
+  <section class="content-section" id="fiqh">
+    <span class="section-eyebrow">فقه وعبادة</span>
+    <h2>الفقه الإسلامي</h2>
+    <p>موضوعات فقهية منظمة مع توثيق المصادر وبيان مواضع الخلاف عند الحاجة.</p>
+  </section>
+
+  <section class="content-section" id="articles">
+    <span class="section-eyebrow">علم ومعرفة</span>
+    <h2>المقالات الإسلامية</h2>
+    <p>مقالات هادفة وموثوقة في العلوم والمعارف الإسلامية.</p>
+  </section>
+
+  <section class="content-section" id="library">
+    <span class="section-eyebrow">كنوز المعرفة</span>
+    <h2>المكتبة الإسلامية</h2>
+    <p>كتب ومراجع علمية إسلامية مرتبة حسب التخصص.</p>
+  </section>
+
+  <section class="about-section" id="about">
+
+    <span class="section-eyebrow">رسالتنا</span>
+    <h2>العلم النافع والأمانة</h2>
+
+    <p>
+      نسعى إلى تقديم محتوى إسلامي موثوق،
+      يجمع بين صحة المعلومة وسهولة الوصول
+      واحترام عقل الزائر ووقته.
     </p>
 
-  </footer>
+    <div class="values-grid">
 
+      <div class="value-item">
+        <span>✦</span>
+        <h3>المصداقية</h3>
+        <p>الرجوع إلى المصادر الموثوقة.</p>
+      </div>
 
-  <button
-    class="back-to-top"
-    id="back-to-top"
-    type="button"
-    aria-label="العودة إلى الأعلى">
-    ↑
-  </button>
+      <div class="value-item">
+        <span>۞</span>
+        <h3>الأمانة</h3>
+        <p>الدقة في نقل النصوص الشرعية.</p>
+      </div>
 
+      <div class="value-item">
+        <span>❖</span>
+        <h3>العلم النافع</h3>
+        <p>معرفة يسهل الوصول إليها.</p>
+      </div>
 
-  <script src="app.js"></script>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+
+  <div class="footer-symbol">۞</div>
+  <h2>إسلاميات</h2>
+  <p>نور العلم والذكر والهداية</p>
+
+  <div class="footer-links">
+    <a href="#home">الرئيسية</a>
+    <a href="#sections">الأقسام</a>
+    <a href="#about">عن المنصة</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <p class="copyright">
+    إسلاميات © <span id="current-year">2026</span>
+  </p>
+
+  <p class="footer-prayer">
+    نسأل الله أن يجعل هذا العمل خالصًا لوجهه الكريم
+    وأن ينفع به عباده.
+  </p>
+
+</footer>
+
+<button
+  class="back-to-top"
+  id="back-to-top"
+  type="button"
+  aria-label="العودة إلى الأعلى">
+  ↑
+</button>
+
+<!-- Supabase configuration must be loaded before app.js -->
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
