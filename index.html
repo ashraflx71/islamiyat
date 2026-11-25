@@ -7,152 +7,7 @@
   <meta name="theme-color" content="#102b24">
   <meta name="description" content="إسلاميات - منصة للقرآن الكريم والسنة النبوية والأذكار والأدعية والمكتبة الإسلامية.">
   <title>إسلاميات | نور العلم والذكر</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Tahoma, Arial, sans-serif;
-      background: #f7f6f0;
-      color: #24352e;
-      line-height: 1.8;
-    }
-
-    header {
-      background: #102b24;
-      color: #fff;
-      padding: 22px 16px;
-      text-align: center;
-      border-bottom: 4px solid #c5a45b;
-    }
-
-    header h1 {
-      color: #e5cc88;
-      font-size: 30px;
-      margin-bottom: 5px;
-    }
-
-    header p {
-      color: #e7e5d9;
-      font-size: 14px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 14px 10px;
-      background: #fff;
-      border-bottom: 1px solid #e8e3d5;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #245443;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 42px 18px;
-      background: linear-gradient(145deg, #153d30, #102b24);
-      color: white;
-    }
-
-    .hero h2 {
-      color: #e5cc88;
-      font-size: 25px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      max-width: 600px;
-      margin: auto;
-      color: #f1eee4;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 22px;
-      color: #245443;
-      font-size: 23px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      background: white;
-      padding: 22px 12px;
-      text-align: center;
-      border-radius: 14px;
-      border: 1px solid #e9e2d1;
-      box-shadow: 0 4px 12px #172c2010;
-    }
-
-    .card .symbol {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .card h3 {
-      color: #245443;
-      font-size: 17px;
-      margin-bottom: 5px;
-    }
-
-    .card p {
-      color: #777;
-      font-size: 12px;
-    }
-
-    .verse {
-      background: #fff;
-      border: 1px solid #e5d7ad;
-      border-radius: 14px;
-      padding: 24px 18px;
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .verse h3 {
-      color: #a17c36;
-      margin-bottom: 12px;
-    }
-
-    .verse p {
-      font-size: 19px;
-      color: #245443;
-    }
-
-    footer {
-      margin-top: 40px;
-      background: #102b24;
-      color: #eee9dc;
-      text-align: center;
-      padding: 22px 12px;
-      font-size: 13px;
-    }
-
-    @media (max-width: 480px) {
-      header h1 { font-size: 25px; }
-      .hero h2 { font-size: 21px; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -182,6 +37,7 @@
       <h2 class="section-title">أقسام المنصة</h2>
 
       <div class="grid">
+
         <article class="card">
           <div class="symbol">📖</div>
           <h3>القرآن الكريم</h3>
@@ -217,6 +73,7 @@
           <h3>المفضلة</h3>
           <p>احفظ ما تريد الرجوع إليه</p>
         </article>
+
       </div>
     </section>
 
@@ -238,9 +95,10 @@
   </main>
 
   <footer>
-    <p>إسلاميات © 2026</p>
+    <p>إسلاميات © <span id="current-year">2026</span></p>
     <p>نسأل الله أن يجعل هذا العمل خالصًا لوجهه الكريم.</p>
   </footer>
 
+  <script src="app.js"></script>
 </body>
 </html>
