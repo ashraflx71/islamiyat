@@ -1,58 +1,70 @@
-
 "use strict";
 
 /*
  * ISLAMIYAT
  * Supabase Configuration
- * Arabic / English
- * Version: 1.0.0
+ * Version: 1.1.0
  */
 
 (function () {
-  const SUPABASE_CONFIG = {
+  const CONFIG = Object.freeze({
     url: "https://gbvbrvalkttjmwfbkhva.supabase.co",
+    publishableKey: "sb_publishable_-toTeZAsWaW_EzM4oX8GZw_qUlwdoyW"
+  });
 
-    publishableKey:
-      "sb_publishable_-toTeZAsWaW_EzM4oX8GZw_qUlwdoyW"
-  };
-
-  // Verify Supabase library
-  if (!window.supabase || !window.supabase.createClient) {
-    console.error(
-      "ISLAMIYAT: Supabase library is not loaded."
-    );
+  if (window.supabaseClient) {
+    console.info("ISLAMIYAT: Client already initialized.");
     return;
   }
 
-  // Create Supabase client
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_CONFIG.url,
-    SUPABASE_CONFIG.publishableKey,
-    {
-      auth: {
-        autoRefreshToken: true,
-        persistSession: true,
-        detectSessionInUrl: true
-      },
+  if (
+    !window.supabase ||
+    typeof window.supabase.createClient !== "function"
+  ) {
+    console.error("ISLAMIYAT: Supabase library unavailable.");
 
-      global: {
-        headers: {
-          "X-Client-Info": "islamiyat-web"
+    window.ISLAMIYAT_SUPABASE = {
+      initialized: false,
+      error: "SUPABASE_LIBRARY_UNAVAILABLE"
+    };
+
+    return;
+  }
+
+  try {
+    const client = window.supabase.createClient(
+      CONFIG.url,
+      CONFIG.publishableKey,
+      {
+        auth: {
+          autoRefreshToken: true,
+          persistSession: true,
+          detectSessionInUrl: true
+        },
+        global: {
+          headers: {
+            "X-Client-Info": "islamiyat-web/1.1.0"
+          }
         }
       }
-    }
-  );
+    );
 
-  // Make client available to application
-  window.supabaseClient = supabaseClient;
+    window.supabaseClient = client;
 
-  // Configuration status
-  window.ISLAMIYAT_SUPABASE = {
-    initialized: true,
-    version: "1.0.0"
-  };
+    window.ISLAMIYAT_SUPABASE = {
+      initialized: true,
+      version: "1.1.0",
+      project: "islamiyat"
+    };
 
-  console.info(
-    "ISLAMIYAT: Supabase connected successfully."
-  );
+    console.info("ISLAMIYAT: Supabase client initialized.");
+
+  } catch (error) {
+    console.error("ISLAMIYAT: Initialization failed.", error);
+
+    window.ISLAMIYAT_SUPABASE = {
+      initialized: false,
+      error: "INITIALIZATION_FAILED"
+    };
+  }
 })();
