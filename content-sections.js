@@ -24,24 +24,69 @@
     parent.appendChild(node);
   }
 
-  function contentText(value) {
-    if (!value || typeof value !== "object") return "";
-    const direct = ["text", "body", "description", "text_ar", "body_ar", "summary"];
-    for (const key of direct) {
-      if (typeof value[key] === "string" && value[key].trim()) return value[key].trim();
-    }
-    for (const key of ["paragraphs", "sections", "items", "timeline", "topics"]) {
-      if (Array.isArray(value[key])) {
-        return value[key].map(item => {
-          if (typeof item === "string") return item;
-          if (item && typeof item === "object") {
-            return [item.title, item.text, item.body, item.place, item.period].filter(v => typeof v === "string").join(" — ");
-          }
-          return "";
-        }).filter(Boolean).join("\n\n");
+  const contentLabels = {
+    narrator: "الراوي",
+    reference: "التخريج والمرجع",
+    explanation: "الشرح",
+    meaning: "المعنى",
+    timing: "وقت الذكر وفضله",
+    author: "المؤلف",
+    book_title: "عنوان الكتاب",
+    description: "نبذة",
+    surah: "السورة",
+    ayah: "الآية",
+    tafsir_source: "مصدر التفسير"
+  };
+
+  function appendContent(parent, value) {
+    if (!value || typeof value !== "object") return;
+    const mainText = ["text", "body", "description", "text_ar", "body_ar"];
+    for (const key of mainText) {
+      if (typeof value[key] === "string" && value[key].trim()) {
+        addText(parent, "p", value[key], "content-body");
+        break;
       }
     }
-    return "";
+
+    for (const key of Object.keys(contentLabels)) {
+      const field = value[key];
+      if (typeof field !== "string" || !field.trim()) continue;
+      const line = document.createElement("p");
+      line.className = "content-detail";
+      const label = document.createElement("strong");
+      label.textContent = contentLabels[key] + ": ";
+      line.appendChild(label);
+      line.appendChild(document.createTextNode(field.trim()));
+      parent.appendChild(line);
+    }
+
+    const paragraphs = value.paragraphs;
+    if (Array.isArray(paragraphs)) {
+      paragraphs.forEach(paragraph => addText(parent, "p", typeof paragraph === "string" ? paragraph : "", "content-body"));
+    }
+
+    const listFields = [
+      { key: "topics", title: "موضوعات هذا الباب" },
+      { key: "items", title: "العناصر" },
+      { key: "sections", title: "الموضوعات" },
+      { key: "timeline", title: "محطات زمنية" }
+    ];
+    for (const group of listFields) {
+      if (!Array.isArray(value[group.key]) || !value[group.key].length) continue;
+      addText(parent, "h4", group.title, "content-subheading");
+      const list = document.createElement("ul");
+      list.className = group.key === "timeline" ? "content-list content-timeline" : "content-list";
+      value[group.key].forEach(entry => {
+        let text = "";
+        if (typeof entry === "string") text = entry;
+        else if (entry && typeof entry === "object") {
+          text = [entry.title, entry.text, entry.body, entry.place, entry.period]
+            .filter(part => typeof part === "string" && part.trim()).join(" — ");
+        }
+        if (text) addText(list, "li", text);
+      });
+      if (list.childNodes.length) parent.appendChild(list);
+    }
   }
 
   function renderEntry(item, container) {
@@ -49,7 +94,7 @@
     article.className = "content-entry";
     addText(article, "h3", item.title);
     addText(article, "p", item.summary);
-    addText(article, "p", contentText(item.content));
+    const content = document.createElement("div");\n    content.className = "content-entry-body";\n    appendContent(content, item.content);\n    if (content.childNodes.length) article.appendChild(content);
     if (item.source_name || item.authenticity_status) {
       const source = document.createElement("p");
       source.className = "content-source";
