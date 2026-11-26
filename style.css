@@ -403,6 +403,61 @@ input {
   font-size: 13px;
 }
 
+.content-entry-body {
+  margin-top: 14px;
+  text-align: right;
+  color: var(--text);
+}
+.content-body {
+  margin: 10px 0;
+  line-height: 2;
+  white-space: pre-line;
+}
+.content-detail {
+  margin: 7px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.content-detail strong,
+.content-subheading {
+  color: var(--green);
+}
+.content-subheading {
+  margin: 14px 0 6px;
+  font-size: 16px;
+}
+.content-list {
+  margin: 8px 22px 12px 0;
+  padding: 0 12px 0 0;
+  line-height: 2;
+}
+.content-list li {
+  margin: 5px 0;
+}
+.content-timeline li::marker {
+  color: var(--gold);
+}
+.content-entry {
+  text-align: right;
+}
+.content-entry .content-source {
+  margin-top: 14px;
+}
+.content-entry .content-source a {
+  color: #8a6829;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.content-items {
+  text-align: right;
+}
+.quran-reading-tools button:focus-visible,
+.content-entry a:focus-visible,
+.main-nav a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
 /* ABOUT */
 
 .about-section {
