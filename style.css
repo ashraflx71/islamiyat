@@ -992,3 +992,54 @@ html[dir="ltr"] .quran-verse-item {
   .quran-verse-text { font-size: var(--quran-font-size, 30px); }
   .quran-reading-tools { gap: 7px; }
 }
+
+
+/* Initiative founder prayer */
+.initiative-prayer {
+  max-width: 780px;
+  margin: 30px auto 0;
+  padding: 24px 22px;
+  border: 1px solid rgba(197, 164, 91, 0.55);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #f7f6f1, #ffffff);
+  text-align: center;
+}
+.initiative-prayer-symbol {
+  display: block;
+  color: var(--gold);
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.initiative-prayer h3 {
+  margin: 4px 0 12px;
+  color: var(--green);
+  font-size: 19px;
+}
+.initiative-prayer p {
+  margin: 0 auto;
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+}
+.initiative-prayer .prayer-en {
+  display: none;
+}
+html[lang="en"] .initiative-prayer .prayer-ar {
+  display: none;
+}
+html[lang="en"] .initiative-prayer .prayer-en {
+  display: block;
+  direction: ltr;
+}
+@media (max-width: 520px) {
+  .initiative-prayer {
+    padding: 19px 14px;
+  }
+  .initiative-prayer h3 {
+    font-size: 17px;
+  }
+  .initiative-prayer p {
+    font-size: 13px;
+  }
+}
