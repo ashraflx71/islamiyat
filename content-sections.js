@@ -93,7 +93,10 @@
     article.className = "content-entry";
     addText(article, "h3", item.title);
     addText(article, "p", item.summary);
-    const content = document.createElement("div");\n    content.className = "content-entry-body";\n    appendContent(content, item.content);\n    if (content.childNodes.length) article.appendChild(content);
+    const content = document.createElement("div");
+    content.className = "content-entry-body";
+    appendContent(content, item.content);
+    if (content.childNodes.length) article.appendChild(content);
     if (item.source_name || item.authenticity_status) {
       const source = document.createElement("p");
       source.className = "content-source";
