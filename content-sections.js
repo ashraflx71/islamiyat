@@ -30,12 +30,12 @@
     for (const key of direct) {
       if (typeof value[key] === "string" && value[key].trim()) return value[key].trim();
     }
-    for (const key of ["paragraphs", "sections", "items"]) {
+    for (const key of ["paragraphs", "sections", "items", "timeline", "topics"]) {
       if (Array.isArray(value[key])) {
         return value[key].map(item => {
           if (typeof item === "string") return item;
           if (item && typeof item === "object") {
-            return [item.title, item.text, item.body].filter(v => typeof v === "string").join("\n");
+            return [item.title, item.text, item.body, item.place, item.period].filter(v => typeof v === "string").join(" — ");
           }
           return "";
         }).filter(Boolean).join("\n\n");
