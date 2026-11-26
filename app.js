@@ -669,6 +669,7 @@ const Islamiyat = {
       return;
     }
 
+    container.setAttribute("aria-busy", "true");
     container.textContent = t.loadingSurahs;
 
     try {
@@ -699,6 +700,8 @@ const Islamiyat = {
 
       container.textContent =
         this.translations[this.language].quranError;
+    } finally {
+      container.setAttribute("aria-busy", "false");
     }
   },
 
@@ -800,6 +803,8 @@ const Islamiyat = {
 
     // Prevent old requests from replacing newer selections.
     const requestId = ++this.quranRequestId;
+    const quranContainer = verses.closest("#quran-content");
+    if (quranContainer) quranContainer.setAttribute("aria-busy", "true");
 
     details.textContent =
       `${surah.name_ar} - ${surah.ayah_count} ${t.verses}`;
@@ -879,6 +884,10 @@ const Islamiyat = {
       console.error("Islamiyat verse loading error:", error);
 
       status.textContent = t.quranError;
+    } finally {
+      if (quranContainer && requestId === this.quranRequestId) {
+        quranContainer.setAttribute("aria-busy", "false");
+      }
     }
   }
 
