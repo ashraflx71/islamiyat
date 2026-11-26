@@ -665,10 +665,12 @@ const Islamiyat = {
 
     if (!client) {
       container.textContent = t.databaseError;
+      container.setAttribute("aria-busy", "false");
       console.error("Islamiyat: Supabase client is unavailable.");
       return;
     }
 
+    container.setAttribute("aria-busy", "true");
     container.textContent = t.loadingSurahs;
 
     try {
@@ -683,10 +685,12 @@ const Islamiyat = {
 
       if (!Array.isArray(data) || data.length === 0) {
         container.textContent = t.noSurahs;
+        container.setAttribute("aria-busy", "false");
         return;
       }
 
       this.quranSurahs = data;
+      container.setAttribute("aria-busy", "false");
 
       this.renderQuranBrowser(
         container,
@@ -699,6 +703,7 @@ const Islamiyat = {
 
       container.textContent =
         this.translations[this.language].quranError;
+      container.setAttribute("aria-busy", "false");
     }
   },
 
@@ -800,6 +805,8 @@ const Islamiyat = {
 
     // Prevent old requests from replacing newer selections.
     const requestId = ++this.quranRequestId;
+    const quranContainer = verses.closest("#quran-content");
+    if (quranContainer) quranContainer.setAttribute("aria-busy", "true");
 
     details.textContent =
       `${surah.name_ar} - ${surah.ayah_count} ${t.verses}`;
@@ -879,6 +886,10 @@ const Islamiyat = {
       console.error("Islamiyat verse loading error:", error);
 
       status.textContent = t.quranError;
+    } finally {
+      if (quranContainer && requestId === this.quranRequestId) {
+        quranContainer.setAttribute("aria-busy", "false");
+      }
     }
   }
 

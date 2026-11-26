@@ -168,15 +168,45 @@
   }
 
   function setupQuranFontControls() {
-    let size = 30;
-    const apply = () => document.documentElement.style.setProperty("--quran-font-size", size + "px");
+    const storageKey = "islamiyat-quran-font-size";
+    const defaultSize = 30;
+    let size = defaultSize;
+
+    try {
+      const saved = Number.parseInt(localStorage.getItem(storageKey), 10);
+      if (Number.isFinite(saved)) size = Math.min(48, Math.max(22, saved));
+    } catch {
+      // Keep the default when browser storage is unavailable.
+    }
+
+    const apply = (save = true) => {
+      document.documentElement.style.setProperty("--quran-font-size", size + "px");
+      if (!save) return;
+      try {
+        localStorage.setItem(storageKey, String(size));
+      } catch {
+        // Font controls remain usable for this visit without storage.
+      }
+    };
+
     const increase = document.getElementById("quran-font-increase");
     const decrease = document.getElementById("quran-font-decrease");
     const reset = document.getElementById("quran-font-reset");
-    if (increase) increase.addEventListener("click", () => { size = Math.min(48, size + 2); apply(); });
-    if (decrease) decrease.addEventListener("click", () => { size = Math.max(22, size - 2); apply(); });
-    if (reset) reset.addEventListener("click", () => { size = 30; apply(); });
-    apply();
+
+    if (increase) increase.addEventListener("click", () => {
+      size = Math.min(48, size + 2);
+      apply();
+    });
+    if (decrease) decrease.addEventListener("click", () => {
+      size = Math.max(22, size - 2);
+      apply();
+    });
+    if (reset) reset.addEventListener("click", () => {
+      size = defaultSize;
+      apply();
+    });
+
+    apply(false);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
