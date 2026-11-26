@@ -188,6 +188,14 @@
     <span class="section-eyebrow">كلام الله تعالى</span>
     <h2>القرآن الكريم</h2>
 
+
+    <div class="quran-reading-tools" role="group" aria-label="أدوات تكبير خط القرآن">
+      <span>حجم الخط:</span>
+      <button type="button" id="quran-font-decrease" aria-label="تصغير خط القرآن">أ−</button>
+      <button type="button" id="quran-font-reset" aria-label="الحجم الافتراضي">افتراضي</button>
+      <button type="button" id="quran-font-increase" aria-label="تكبير خط القرآن">أ+</button>
+    </div>
+
     <p class="quran-verse">
       ﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾
     </p>
@@ -208,48 +216,72 @@
     <span class="section-eyebrow">هدي النبي ﷺ</span>
     <h2>السنة النبوية</h2>
     <p>الأحاديث النبوية مع مصادرها وتخريجها وبيان درجتها وفق المراجع المعتمدة.</p>
+      <div class="content-items" data-content-slug="hadith" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="content-section" id="adhkar">
     <span class="section-eyebrow">طمأنينة القلب</span>
     <h2>الأذكار</h2>
     <p>أذكار الصباح والمساء والأذكار اليومية من المصادر الموثوقة.</p>
+      <div class="content-items" data-content-slug="adhkar" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="content-section" id="dua">
     <span class="section-eyebrow">الدعاء عبادة</span>
     <h2>الأدعية</h2>
     <p>أدعية القرآن الكريم والأدعية النبوية المأثورة.</p>
+      <div class="content-items" data-content-slug="dua" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="content-section" id="tafsir">
     <span class="section-eyebrow">تدبر وفهم</span>
     <h2>التفسير</h2>
     <p>فهم معاني الآيات بالرجوع إلى كتب التفسير المعتمدة.</p>
+      <div class="content-items" data-content-slug="tafsir" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="content-section" id="seerah">
     <span class="section-eyebrow">السيرة العطرة</span>
     <h2>السيرة النبوية</h2>
     <p>رحلة في سيرة الرسول محمد ﷺ ومراحل حياته المباركة.</p>
+      <div class="content-items" data-content-slug="seerah" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="content-section" id="fiqh">
     <span class="section-eyebrow">فقه وعبادة</span>
     <h2>الفقه الإسلامي</h2>
     <p>موضوعات فقهية منظمة مع توثيق المصادر وبيان مواضع الخلاف عند الحاجة.</p>
+      <div class="content-items" data-content-slug="fiqh" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="content-section" id="articles">
     <span class="section-eyebrow">علم ومعرفة</span>
     <h2>المقالات الإسلامية</h2>
     <p>مقالات هادفة وموثوقة في العلوم والمعارف الإسلامية.</p>
+      <div class="content-items" data-content-slug="articles" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="content-section" id="library">
     <span class="section-eyebrow">كنوز المعرفة</span>
     <h2>المكتبة الإسلامية</h2>
     <p>كتب ومراجع علمية إسلامية مرتبة حسب التخصص.</p>
+      <div class="content-items" data-content-slug="library" aria-live="polite">
+      <p class="content-loading">جارٍ تحميل المحتوى الموثق...</p>
+    </div>
   </section>
 
   <section class="about-section" id="about">
@@ -323,6 +355,7 @@
 
 <!-- Supabase configuration must be loaded before app.js -->
 <script src="supabase-config.js"></script>
+<script src="content-sections.js"></script>
 <script src="app.js"></script>
 
 </body>
