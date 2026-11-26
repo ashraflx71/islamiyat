@@ -665,6 +665,7 @@ const Islamiyat = {
 
     if (!client) {
       container.textContent = t.databaseError;
+      container.setAttribute("aria-busy", "false");
       console.error("Islamiyat: Supabase client is unavailable.");
       return;
     }
@@ -684,10 +685,12 @@ const Islamiyat = {
 
       if (!Array.isArray(data) || data.length === 0) {
         container.textContent = t.noSurahs;
+        container.setAttribute("aria-busy", "false");
         return;
       }
 
       this.quranSurahs = data;
+      container.setAttribute("aria-busy", "false");
 
       this.renderQuranBrowser(
         container,
@@ -700,7 +703,6 @@ const Islamiyat = {
 
       container.textContent =
         this.translations[this.language].quranError;
-    } finally {
       container.setAttribute("aria-busy", "false");
     }
   },
