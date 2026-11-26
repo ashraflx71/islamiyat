@@ -15,7 +15,13 @@
 
   <title>إسلاميات | نور العلم والذكر والهداية</title>
 
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="إسلاميات">
+  <link rel="apple-touch-icon" href="./icon.svg">
   <link rel="stylesheet" href="style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,6 +90,8 @@
         والأذكار والأدعية والعلوم الإسلامية في مكان واحد،
         بمصادر موثوقة وتجربة رقمية تليق بعظمة العلم النافع.
       </p>
+
+      <button id="install-app" class="install-app-button" type="button" hidden>⬇ تثبيت تطبيق إسلاميات</button>
 
       <a href="#sections" class="primary-button">
         اكتشف أقسام المنصة <span>←</span>
@@ -364,6 +372,7 @@
 <script src="supabase-config.js"></script>
 <script src="content-sections.js"></script>
 <script src="app.js"></script>
+<script src="pwa.js"></script>
 
 </body>
 </html>
