@@ -167,20 +167,8 @@
     }
   }
 
-  function setupQuranFontControls() {
-    let size = 30;
-    const apply = () => document.documentElement.style.setProperty("--quran-font-size", size + "px");
-    const increase = document.getElementById("quran-font-increase");
-    const decrease = document.getElementById("quran-font-decrease");
-    const reset = document.getElementById("quran-font-reset");
-    if (increase) increase.addEventListener("click", () => { size = Math.min(48, size + 2); apply(); });
-    if (decrease) decrease.addEventListener("click", () => { size = Math.max(22, size - 2); apply(); });
-    if (reset) reset.addEventListener("click", () => { size = 30; apply(); });
-    apply();
-  }
 
   document.addEventListener("DOMContentLoaded", () => {
-    setupQuranFontControls();
     load();
   });
 })();
