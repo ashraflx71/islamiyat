@@ -240,6 +240,7 @@ const Islamiyat = {
     this.setupLanguage();
     this.setupBackToTop();
     this.setupMobileMenu();
+    this.setupQuranFontControls();
 
     this.applyLanguage(this.getSavedLanguage());
 
