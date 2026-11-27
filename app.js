@@ -240,6 +240,7 @@ const Islamiyat = {
     this.setupLanguage();
     this.setupBackToTop();
     this.setupMobileMenu();
+    this.setupQuranFontControls();
 
     this.applyLanguage(this.getSavedLanguage());
 
@@ -247,6 +248,48 @@ const Islamiyat = {
     this.loadQuran();
 
     console.log("Islamiyat initialized:", this.version);
+  },
+
+  /*
+   * QURAN READING FONT CONTROLS
+   */
+
+  setupQuranFontControls() {
+    const root = document.documentElement;
+    const decrease = document.getElementById("quran-font-decrease");
+    const reset = document.getElementById("quran-font-reset");
+    const increase = document.getElementById("quran-font-increase");
+    const minimum = 22;
+    const maximum = 40;
+    const defaultSize = 30;
+    let fontSize = defaultSize;
+
+    try {
+      const savedSize = Number(localStorage.getItem("islamiyat-quran-font-size"));
+      if (Number.isFinite(savedSize) && savedSize >= minimum && savedSize <= maximum) {
+        fontSize = savedSize;
+      }
+    } catch {
+      // Use the default size when local storage is unavailable.
+    }
+
+    const applyFontSize = (nextSize) => {
+      fontSize = Math.min(maximum, Math.max(minimum, nextSize));
+      root.style.setProperty("--quran-font-size", fontSize + "px");
+      try {
+        localStorage.setItem("islamiyat-quran-font-size", String(fontSize));
+      } catch {
+        // Reading controls remain usable without saved preferences.
+      }
+      if (decrease) decrease.disabled = fontSize <= minimum;
+      if (increase) increase.disabled = fontSize >= maximum;
+    };
+
+    if (decrease) decrease.addEventListener("click", () => applyFontSize(fontSize - 2));
+    if (increase) increase.addEventListener("click", () => applyFontSize(fontSize + 2));
+    if (reset) reset.addEventListener("click", () => applyFontSize(defaultSize));
+
+    applyFontSize(fontSize);
   },
 
   /*

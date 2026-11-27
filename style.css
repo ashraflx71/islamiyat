@@ -1065,3 +1065,252 @@ html[lang="en"] .initiative-prayer .prayer-en {
 .install-app-button:hover { background: rgba(197,164,91,.16); transform: translateY(-2px); }
 .install-app-button[hidden] { display: none !important; }
 @media (max-width: 520px) { .install-app-button { margin: 20px 0 0; width: 100%; } }
+
+
+/* =========================
+   CHARCOAL TEXT + READABILITY
+   Keep gold as a decorative accent and light text on dark surfaces.
+========================= */
+:root {
+  --green: #24282d;
+  --green-light: #3b4148;
+  --text: #202326;
+  --muted: #3f454b;
+}
+
+body {
+  color: #202326;
+  font-size: 16px;
+  line-height: 1.95;
+}
+
+.section-heading h2,
+.content-section h2,
+.about-section h2,
+.category-card h3,
+.value-item h3,
+.content-detail strong,
+.content-subheading,
+.content-entry h3,
+.initiative-prayer h3 {
+  color: #202326;
+}
+
+.section-heading p,
+.category-card p,
+.content-section > p,
+.about-section > p,
+.value-item p,
+.content-detail,
+.content-note,
+.content-source,
+.content-loading,
+.content-empty,
+.content-error,
+.quran-status,
+.search-hint,
+.search-no-results {
+  color: #3f454b;
+}
+
+.hero-content > p {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.section-heading p,
+.category-card p,
+.content-section > p,
+.about-section > p,
+.value-item p {
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.content-detail,
+.content-entry .content-source,
+.quran-status,
+.quran-verse-metadata {
+  font-size: 14px;
+}
+
+.search-hint,
+.brand-text small {
+  font-size: 13px;
+}
+
+.content-entry p,
+.content-body,
+.content-entry-body,
+.content-list,
+.quran-verse-text {
+  color: #202326;
+}
+
+.content-entry a,
+.content-entry .content-source a {
+  color: #70531d;
+  font-weight: 600;
+}
+
+.quran-verse-text {
+  font-size: var(--quran-font-size, 30px);
+  line-height: 2.3;
+}
+
+.quran-verse-item {
+  background: #ffffff;
+  border-color: #c9cdd1;
+}
+
+.category-card,
+.content-section,
+.value-item,
+.content-entry,
+.search-box {
+  border-color: #c9cdd1;
+}
+
+.content-note,
+.quran-status,
+.content-loading,
+.content-empty,
+.content-error {
+  color: #343a40;
+}
+
+::placeholder {
+  color: #555b62;
+  opacity: 1;
+}
+
+@media (max-width: 520px) {
+  body {
+    font-size: 16px;
+  }
+
+  .category-card p,
+  .section-heading p,
+  .content-section > p,
+  .about-section > p,
+  .value-item p {
+    font-size: 14px;
+  }
+
+  .quran-verse-text {
+    font-size: var(--quran-font-size, 30px);
+    line-height: 2.2;
+  }
+}
+
+
+/* HIGH-CLARITY READING PASS: consistent contrast and comfortable spacing */
+:root {
+  color-scheme: light;
+  --text: #202326;
+  --muted: #3f454b;
+}
+
+body,
+main,
+.sections-section,
+.content-section,
+.about-section {
+  color: #202326;
+}
+
+.content-section,
+.about-section,
+.sections-section {
+  background-color: #f7f8f9;
+}
+
+.content-section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.content-section h2,
+.about-section h2,
+.section-heading h2,
+.content-section h3,
+.about-section h3,
+.value-item h3 {
+  color: #202326;
+  line-height: 1.6;
+}
+
+.content-section > p,
+.about-section > p,
+.section-heading > p,
+.category-card p,
+.value-item p,
+.content-entry p,
+.content-detail,
+.content-note {
+  color: #30363c;
+  line-height: 2;
+}
+
+.content-entry,
+.category-card,
+.value-item {
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(25, 32, 38, 0.055);
+}
+
+.content-entry p,
+.content-entry .content-body,
+.content-entry .content-entry-body {
+  font-size: 16px;
+  line-height: 2.05;
+}
+
+.content-entry .content-source,
+.content-detail,
+.content-note,
+.quran-verse-metadata {
+  color: #3f454b;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.quran-reading-tools button {
+  color: #202326;
+  background: #ffffff;
+  border: 2px solid #806126;
+  font-weight: 800;
+}
+
+.quran-reading-tools button:disabled {
+  color: #626970;
+  background: #eceff1;
+  border-color: #aeb5bb;
+}
+
+.content-entry a,
+.content-section a:not(.category-card) {
+  color: #654817;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .content-entry p,
+  .content-entry .content-body,
+  .content-entry .content-entry-body,
+  .content-section > p,
+  .about-section > p {
+    font-size: 16px;
+    line-height: 2.05;
+  }
+
+  .content-entry {
+    padding: 20px 16px;
+  }
+
+  .quran-reading-tools button {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
