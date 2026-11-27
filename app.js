@@ -874,7 +874,7 @@ const Islamiyat = {
       // Never render a damaged or missing Quran text record.
       const corruptedVerse = data.find(verse =>
         typeof verse.text_uthmani !== "string" ||
-        verse.text_uthmani.length === 0 ||
+        verse.text_uthmani.trim().length === 0 ||
         verse.text_uthmani.includes("\uFFFD")
       );
 
