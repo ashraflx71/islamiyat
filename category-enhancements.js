@@ -42,7 +42,9 @@
     if (!meta) {
       meta = document.createElement("span");
       meta.className = "category-card-meta";
-      const arrow = card.querySelector(".card-arrow");\n    if (arrow) card.insertBefore(meta, arrow);\n    else card.appendChild(meta);
+      const arrow = card.querySelector(".card-arrow");
+    if (arrow) card.insertBefore(meta, arrow);
+    else card.appendChild(meta);
     }
     const t = currentLabels();
     meta.textContent = isQuran
@@ -91,7 +93,24 @@
     });
   }
 
-  function refreshLanguageLabels() {\n    const t = currentLabels();\n    document.querySelectorAll(".category-card").forEach(card => {\n      const meta = card.querySelector(".category-card-meta");\n      if (!meta) return;\n      const anchor = card.getAttribute("href")?.slice(1);\n      const value = Number(meta.dataset.count || 0);\n      meta.textContent = anchor === "quran" ? value + " " + t.surahs : value + " " + t.published;\n    });\n    document.querySelectorAll(".section-content-search").forEach(input => {\n      input.placeholder = t.search;\n      input.setAttribute("aria-label", t.search);\n    });\n    document.querySelectorAll(".section-back-link").forEach(link => { link.textContent = t.back; });\n    document.querySelectorAll(".section-search-empty").forEach(node => { node.textContent = t.empty; });\n  }\n\n  async function enhance() {
+  function refreshLanguageLabels() {
+    const t = currentLabels();
+    document.querySelectorAll(".category-card").forEach(card => {
+      const meta = card.querySelector(".category-card-meta");
+      if (!meta) return;
+      const anchor = card.getAttribute("href")?.slice(1);
+      const value = Number(meta.dataset.count || 0);
+      meta.textContent = anchor === "quran" ? value + " " + t.surahs : value + " " + t.published;
+    });
+    document.querySelectorAll(".section-content-search").forEach(input => {
+      input.placeholder = t.search;
+      input.setAttribute("aria-label", t.search);
+    });
+    document.querySelectorAll(".section-back-link").forEach(link => { link.textContent = t.back; });
+    document.querySelectorAll(".section-search-empty").forEach(node => { node.textContent = t.empty; });
+  }
+
+  async function enhance() {
     const client = window.supabaseClient;
     if (!client) return;
 
@@ -126,12 +145,17 @@
         card.setAttribute("aria-label", card.querySelector("h3")?.textContent || slug);
       });
 
-      document.querySelectorAll(".content-items[data-content-slug]").forEach(setupSectionSearch);\n      refreshLanguageLabels();
+      document.querySelectorAll(".content-items[data-content-slug]").forEach(setupSectionSearch);
+      refreshLanguageLabels();
     } catch (error) {
       console.warn("Islamiyat category enhancement unavailable:", error);
       // Keep the original category navigation and content rendering usable.
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {\n    enhance();\n    const languageButton = document.getElementById("language-button");\n    if (languageButton) languageButton.addEventListener("click", () => setTimeout(refreshLanguageLabels, 0));\n  });
+  document.addEventListener("DOMContentLoaded", () => {
+    enhance();
+    const languageButton = document.getElementById("language-button");
+    if (languageButton) languageButton.addEventListener("click", () => setTimeout(refreshLanguageLabels, 0));
+  });
 })();
