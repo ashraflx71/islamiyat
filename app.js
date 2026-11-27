@@ -875,7 +875,7 @@ const Islamiyat = {
       const corruptedVerse = data.find(verse =>
         typeof verse.text_uthmani !== "string" ||
         verse.text_uthmani.length === 0 ||
-        verse.text_uthmani.includes("\\uFFFD")
+        verse.text_uthmani.includes("\uFFFD")
       );
 
       if (corruptedVerse) {
