@@ -1314,3 +1314,25 @@ main,
     min-height: 48px;
   }
 }
+
+
+/* Quran source attribution */
+.quran-source {
+  max-width: 760px;
+  margin: 18px auto 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(197, 164, 91, 0.24);
+  border-radius: 12px;
+  color: var(--text-muted, #aeb4bb);
+  font-size: 0.88rem;
+  line-height: 1.9;
+  text-align: center;
+}
+.quran-source a {
+  color: var(--gold, #c5a45b);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+html[dir="rtl"] .quran-source .source-en,
+html[dir="ltr"] .quran-source .source-ar { display: none; }
+html[dir="ltr"] .quran-source { direction: ltr; }

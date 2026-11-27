@@ -72,6 +72,7 @@ const Islamiyat = {
       noSurahs: "لا توجد سور متاحة في قاعدة البيانات.",
       noVerses: "لا توجد آيات مسجلة لهذه السورة.",
       quranError: "تعذر تحميل القرآن الكريم. تحقق من الاتصال وصلاحيات القراءة.",
+      quranTextIntegrityError: "توقف عرض السورة لحماية النص القرآني: توجد آية ببيانات تالفة. جارٍ مراجعة المصدر وتصحيحها.",
       databaseError: "تعذر الاتصال بقاعدة البيانات.",
 
       hadithEyebrow: "هدي النبي ﷺ",
@@ -176,6 +177,7 @@ const Islamiyat = {
       noSurahs: "No Surahs available in the database.",
       noVerses: "No verses found for this Surah.",
       quranError: "Unable to load the Quran. Check connection and read permissions.",
+      quranTextIntegrityError: "This Surah was not displayed to protect Quran accuracy: a verse record is corrupted and requires source verification.",
       databaseError: "Unable to connect to the database.",
 
       hadithEyebrow: "The Prophet's Guidance ﷺ",
@@ -866,6 +868,22 @@ const Islamiyat = {
 
       if (!Array.isArray(data) || data.length === 0) {
         status.textContent = t.noVerses;
+        return;
+      }
+
+      // Never render a damaged or missing Quran text record.
+      const corruptedVerse = data.find(verse =>
+        typeof verse.text_uthmani !== "string" ||
+        verse.text_uthmani.trim().length === 0 ||
+        verse.text_uthmani.includes("\uFFFD")
+      );
+
+      if (corruptedVerse) {
+        console.error("Quran text integrity check failed:", {
+          surah: surahNumber,
+          ayah: corruptedVerse.ayah_number
+        });
+        status.textContent = t.quranTextIntegrityError;
         return;
       }
 
