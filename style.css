@@ -1203,3 +1203,114 @@ body {
     line-height: 2.2;
   }
 }
+
+
+/* HIGH-CLARITY READING PASS: consistent contrast and comfortable spacing */
+:root {
+  color-scheme: light;
+  --text: #202326;
+  --muted: #3f454b;
+}
+
+body,
+main,
+.sections-section,
+.content-section,
+.about-section {
+  color: #202326;
+}
+
+.content-section,
+.about-section,
+.sections-section {
+  background-color: #f7f8f9;
+}
+
+.content-section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.content-section h2,
+.about-section h2,
+.section-heading h2,
+.content-section h3,
+.about-section h3,
+.value-item h3 {
+  color: #202326;
+  line-height: 1.6;
+}
+
+.content-section > p,
+.about-section > p,
+.section-heading > p,
+.category-card p,
+.value-item p,
+.content-entry p,
+.content-detail,
+.content-note {
+  color: #30363c;
+  line-height: 2;
+}
+
+.content-entry,
+.category-card,
+.value-item {
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(25, 32, 38, 0.055);
+}
+
+.content-entry p,
+.content-entry .content-body,
+.content-entry .content-entry-body {
+  font-size: 16px;
+  line-height: 2.05;
+}
+
+.content-entry .content-source,
+.content-detail,
+.content-note,
+.quran-verse-metadata {
+  color: #3f454b;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.quran-reading-tools button {
+  color: #202326;
+  background: #ffffff;
+  border: 2px solid #806126;
+  font-weight: 800;
+}
+
+.quran-reading-tools button:disabled {
+  color: #626970;
+  background: #eceff1;
+  border-color: #aeb5bb;
+}
+
+.content-entry a,
+.content-section a:not(.category-card) {
+  color: #654817;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .content-entry p,
+  .content-entry .content-body,
+  .content-entry .content-entry-body,
+  .content-section > p,
+  .about-section > p {
+    font-size: 16px;
+    line-height: 2.05;
+  }
+
+  .content-entry {
+    padding: 20px 16px;
+  }
+
+  .quran-reading-tools button {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
