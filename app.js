@@ -665,6 +665,7 @@ const Islamiyat = {
 
     if (!client) {
       container.textContent = t.databaseError;
+      container.setAttribute("aria-busy", "false");
       console.error("Islamiyat: Supabase client is unavailable.");
       return;
     }
@@ -683,6 +684,7 @@ const Islamiyat = {
 
       if (!Array.isArray(data) || data.length === 0) {
         container.textContent = t.noSurahs;
+        container.setAttribute("aria-busy", "false");
         return;
       }
 
@@ -699,6 +701,7 @@ const Islamiyat = {
 
       container.textContent =
         this.translations[this.language].quranError;
+      container.setAttribute("aria-busy", "false");
     }
   },
 
@@ -786,6 +789,8 @@ const Islamiyat = {
 
     if (!client) {
       status.textContent = t.databaseError;
+      const container = document.getElementById("quran-content");
+      if (container) container.setAttribute("aria-busy", "false");
       return;
     }
 
@@ -795,11 +800,16 @@ const Islamiyat = {
 
     if (!surah) {
       status.textContent = t.noSurahs;
+      const container = document.getElementById("quran-content");
+      if (container) container.setAttribute("aria-busy", "false");
       return;
     }
 
     // Prevent old requests from replacing newer selections.
     const requestId = ++this.quranRequestId;
+    const container = document.getElementById("quran-content");
+
+    if (container) container.setAttribute("aria-busy", "true");
 
     details.textContent =
       `${surah.name_ar} - ${surah.ayah_count} ${t.verses}`;
@@ -823,6 +833,8 @@ const Islamiyat = {
 
       if (!Array.isArray(data) || data.length === 0) {
         status.textContent = t.noVerses;
+        const container = document.getElementById("quran-content");
+        if (container) container.setAttribute("aria-busy", "false");
         return;
       }
 
@@ -873,12 +885,18 @@ const Islamiyat = {
       status.textContent =
         `${t.loadedVerses} (${data.length})`;
 
+      const container = document.getElementById("quran-content");
+      if (container) container.setAttribute("aria-busy", "false");
+
     } catch (error) {
       if (requestId !== this.quranRequestId) return;
 
       console.error("Islamiyat verse loading error:", error);
 
       status.textContent = t.quranError;
+
+      const container = document.getElementById("quran-content");
+      if (container) container.setAttribute("aria-busy", "false");
     }
   }
 
