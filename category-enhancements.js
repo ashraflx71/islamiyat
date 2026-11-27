@@ -119,6 +119,7 @@
         .from("content_items")
         .select("category_id")
         .eq("status", "published")
+        .order("id", { ascending: true })
         .range(offset, offset + pageSize - 1);
       if (error) throw error;
       (data || []).forEach(item => {
