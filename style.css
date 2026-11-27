@@ -1065,3 +1065,138 @@ html[lang="en"] .initiative-prayer .prayer-en {
 .install-app-button:hover { background: rgba(197,164,91,.16); transform: translateY(-2px); }
 .install-app-button[hidden] { display: none !important; }
 @media (max-width: 520px) { .install-app-button { margin: 20px 0 0; width: 100%; } }
+
+
+/* ISLAMIYAT DARK CHARCOAL THEME — WHITE TEXT, GOLD DECOR ONLY */
+:root {
+  --green: #343a40;
+  --green-light: #4b535c;
+  --gold: #c5a45b;
+  --cream: #20252b;
+  --white: #2b3138;
+  --text: #ffffff;
+  --muted: #d5d9de;
+  --border: #59616a;
+  --shadow: 0 8px 25px rgba(0, 0, 0, 0.24);
+}
+
+html, body {
+  background: #20252b;
+  color: #ffffff;
+}
+
+body :is(h1, h2, h3, h4, p, li, label, span, small, strong, a, input, select, button) {
+  color: #ffffff;
+}
+
+.site-header,
+.site-footer {
+  background: #343a40;
+  color: #ffffff;
+}
+
+.hero {
+  background: linear-gradient(145deg, #4b535c, #20252b);
+  color: #ffffff;
+}
+
+.search-box,
+.category-card,
+.content-section,
+.value-item,
+.content-entry,
+.quran-verse-item,
+.quran-surah-select {
+  background: #2b3138;
+  color: #ffffff;
+  border-color: #59616a;
+}
+
+.search-box input,
+.quran-surah-select,
+.quran-verse-text,
+.content-entry p,
+.content-entry-body,
+.content-detail,
+.content-list,
+.quran-verse,
+.about-section > p,
+.section-heading p,
+.content-section > p {
+  color: #ffffff !important;
+}
+
+.quran-section,
+.about-section {
+  background: #252b32;
+  color: #ffffff;
+  border-color: #59616a;
+}
+
+.quran-verse-item {
+  border-right-color: var(--gold);
+}
+
+.quran-verse-metadata,
+.content-source,
+.content-loading,
+.content-empty,
+.content-error,
+.quran-status,
+.content-note {
+  color: #d5d9de;
+  background: #343a40;
+}
+
+.content-entry .content-source a,
+.content-entry a {
+  color: #ffffff;
+}
+
+.language-button,
+.menu-button,
+.quran-reading-tools button,
+.install-app-button {
+  color: #ffffff;
+  background: #343a40;
+  border: 1px solid var(--gold);
+}
+
+.primary-button,
+.back-to-top {
+  color: #ffffff;
+  background: #343a40;
+  border: 1px solid var(--gold);
+}
+
+.hero-label,
+.hero-decoration,
+.decoration-one,
+.decoration-two,
+.brand-symbol,
+.category-symbol,
+.card-arrow,
+.content-decoration,
+.footer-symbol,
+.initiative-prayer-symbol,
+.section-eyebrow,
+.footer-prayer,
+.copyright {
+  color: var(--gold);
+}
+
+.initiative-prayer {
+  background: #2b3138;
+  color: #ffffff;
+  border-color: var(--gold);
+}
+
+.initiative-prayer p,
+.initiative-prayer h3 {
+  color: #ffffff;
+}
+
+::selection {
+  background: var(--gold);
+  color: #20252b;
+}
