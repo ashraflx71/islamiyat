@@ -47,6 +47,7 @@
     else card.appendChild(meta);
     }
     const t = currentLabels();
+    meta.dataset.count = String(count);
     meta.textContent = isQuran
       ? count + " " + t.surahs
       : count + " " + t.published;
@@ -110,25 +111,40 @@
     document.querySelectorAll(".section-search-empty").forEach(node => { node.textContent = t.empty; });
   }
 
+  async function fetchPublishedCategoryCounts(client) {
+    const counts = new Map();
+    const pageSize = 1000;
+    for (let offset = 0; ; offset += pageSize) {
+      const { data, error } = await client
+        .from("content_items")
+        .select("category_id")
+        .eq("status", "published")
+        .range(offset, offset + pageSize - 1);
+      if (error) throw error;
+      (data || []).forEach(item => {
+        if (item.category_id) {
+          counts.set(item.category_id, (counts.get(item.category_id) || 0) + 1);
+        }
+      });
+      if (!data || data.length < pageSize) break;
+    }
+    return counts;
+  }
+
   async function enhance() {
     const client = window.supabaseClient;
     if (!client) return;
 
     try {
-      const [categoryResult, itemResult, surahResult] = await Promise.all([
+      const [categoryResult, counts, surahResult] = await Promise.all([
         client.from("categories").select("id,slug,is_active").eq("is_active", true),
-        client.from("content_items").select("category_id").eq("status", "published").limit(1000),
+        fetchPublishedCategoryCounts(client),
         client.from("quran_surahs").select("surah_number")
       ]);
       if (categoryResult.error) throw categoryResult.error;
-      if (itemResult.error) throw itemResult.error;
       if (surahResult.error) throw surahResult.error;
 
       const ids = new Map((categoryResult.data || []).map(row => [row.slug, row.id]));
-      const counts = new Map();
-      (itemResult.data || []).forEach(item => {
-        if (item.category_id) counts.set(item.category_id, (counts.get(item.category_id) || 0) + 1);
-      });
 
       document.querySelectorAll(".category-card[href^='#']").forEach(card => {
         const anchor = card.getAttribute("href").slice(1);
