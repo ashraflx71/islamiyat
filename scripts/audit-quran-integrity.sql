@@ -9,7 +9,7 @@ WITH verse_stats AS (
     MIN(ayah_number)::integer AS first_ayah,
     MAX(ayah_number)::integer AS last_ayah,
     COUNT(*) FILTER (
-      WHERE text_uthmani IS NULL OR btrim(text_uthmani) = ''
+      WHERE text_uthmani IS NULL OR text_uthmani ~ '^[[:space:]]*$'
     )::integer AS blank_text_count,
     COUNT(*) FILTER (
       WHERE position(chr(65533) IN COALESCE(text_uthmani, '')) > 0
@@ -49,7 +49,7 @@ SELECT
   (SELECT COUNT(*) FROM public.quran_surahs)::integer AS surah_count,
   (SELECT COUNT(*) FROM public.quran_verses)::integer AS verse_count,
   (SELECT COUNT(*) FROM public.quran_verses
-    WHERE text_uthmani IS NULL OR btrim(text_uthmani) = '')::integer AS blank_verses,
+    WHERE text_uthmani IS NULL OR text_uthmani ~ '^[[:space:]]*$')::integer AS blank_verses,
   (SELECT COUNT(*) FROM public.quran_verses
     WHERE position(chr(65533) IN COALESCE(text_uthmani, '')) > 0)::integer
     AS replacement_character_verses;
